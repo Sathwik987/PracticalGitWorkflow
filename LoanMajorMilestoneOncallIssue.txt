@@ -1,0 +1,20 @@
+usp_UpdateLoanMajorMilestoneFact_SourceDeletes
+
+If it is deleted in loanidentifierdim and update the majormilestone fact and set it to deleted in the majormilestone fact
+
+later day - uncommented the sourcerecorddeleted 
+
+Their is different store proc which also deletes the records - usp_UpsertClosingMilestone_RescindedClosings
+
+When people change their closing date so we get a record that they close basically they take that away and change the closing date...
+
+What this proc does is when closing date is moved..they set it to 1 (update statement) which means deleted. What happening was we are seeing the loans the closings were rescinded that equals to source record deleted = 1 but when we get new closing we need to insert the new record. Y was thinking this was only changing because he was thinking of the loanidentifierdimn. 
+
+Rescinded closings where we do want to keep multiple records per closings per loan and we wanted to keep it rescinded closing where we need to store history.
+
+Analyst impact:
+
+1) 
+
+The only it gets delete 
+ 
